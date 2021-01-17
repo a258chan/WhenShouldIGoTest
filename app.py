@@ -1,5 +1,5 @@
 from flask import Flask, render_template, request
-import main
+import api
 
 app = Flask(__name__)
 
@@ -10,7 +10,7 @@ def input():
 @app.route('/output', methods=['POST'])
 def output():
     location = request.form['location']
-    time = main.findBestTime(location)
+    time = api.findBestTime(location)
     return render_template("output.html", data=time)
 
 if __name__ == "__main__":
